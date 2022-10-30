@@ -82,7 +82,7 @@ We applied STAAR_Trio to analyze the simulated data set.
 ```
 # calcualte the residuals 
 null_model <- lm(Y~1)
-staar_trio(trio[id_trio,snplist],maf[snplist],pos[snplist],PHRED[snplist,],adjust_for_covariates=TRUE,y_res=null_model$residuals[seq(3,15000,3)])
+staar_trio(trio[,snplist],maf[snplist],pos[snplist],PHRED[snplist,],y_res=null_model$residuals[seq(3,15000,3)])
 ```
 
 
