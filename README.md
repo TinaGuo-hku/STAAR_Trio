@@ -7,8 +7,17 @@ install.packages("devtools")
 library(devtools)
 install_github("TinaGuo-hku/STAAR_Trio")
 ```
-We generated 10 functional annotations and calculated the Phred score of the 10 annotations
+Read data
+```
+trio <- readRDS("trio.rds")
+snploc <- readRDS("snploc.rds")
 
+pos <- snploc$CHROM_POS
+maf <- snploc$FREQ1
+
+```
+
+We generated 10 functional annotations and calculated the Phred score of the 10 annotations
 ```
 numVar <- dim(snploc)[1]
 Z1 <- rnorm(numVar)
@@ -63,7 +72,7 @@ isCausal <- rbinom(numSNPs,1,causalprob)
 Calculate the p values of the simulated data using STAAR_Trio
 
 
-Here beta=-0.13*log10(MAF). The directions were all positive. The phenotype of samples was generated through a linear model.
+Here beta=-0.13*log10(MAF). All directions were positive. The phenotype of samples was generated through a linear model.
 
 ```
 # effects size of covariates 
