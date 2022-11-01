@@ -94,6 +94,20 @@ null_model <- lm(Y~1)
 staar_trio(trio[,snplist],maf[snplist],pos[snplist],PHRED[snplist,],y_res=null_model$residuals[seq(3,15000,3)])
 ```
 
+for dichotomous traits
+```
+Y_pro <- rje::expit(alpha0 + alpha1 * X1 + alpha2 * X2 + Geno[,which(isCausal==1)] %*% beta + eps)
+Y <- rbinom(N,1,Y_pro)
+Y_off <- Y[seq(3,7500,3)]
+```
+
+We applied STAAR_Trio to analyze the simulated data set (dichotomous traits).
+```
+mu <- rje::expit(alpha0)
+staar_trio(trio[,snplist],maf[snplist],pos[snplist],PHRED[snplist,],y_res=Y_off - mu)
+
+```
+
 
 
 
